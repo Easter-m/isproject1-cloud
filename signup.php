@@ -18,8 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = 'Enter a valid email address.';
     }
-    if (strlen($password) < 8) {
+        if (strlen($password) < 8) {
         $errors[] = 'Use a password of at least 8 characters.';
+    }
+    if (strlen($password) > 72) {
+        $errors[] = 'Use a password of at most 72 characters.';
+    }
+    if (!preg_match('/[a-z]/', $password) || !preg_match('/[A-Z]/', $password)
+        || !preg_match('/[0-9]/', $password) || !preg_match('/[^a-zA-Z0-9]/', $password)) {
+        $errors[] = 'Password needs a lowercase letter, an uppercase letter, a number and a symbol.';
+    }
+    if ($username !== '' && stripos($password, $username) !== false) {
+        $errors[] = 'Password must not contain your username.';
     }
     if ($password !== $confirm) {
         $errors[] = 'The two passwords do not match.';
@@ -77,8 +87,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="course">Course</label>
         <input id="course" name="course" value="<?= e($course) ?>" required>
 
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" required>
+                <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" required>
+        <div id="strength" class="strength strength-0">
+            <div class="strength-bar"></div>
+            <span class="strength-text">Enter a password</span>
+        </div>
 
         <label for="confirm">Confirm password</label>
         <input id="confirm" name="confirm" type="password" required>
@@ -87,5 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <p class="alt">Already registered? <a href="login.php">Log in</a></p>
 </div>
+<script src="strength.js"></script>
 </body>
 </html>

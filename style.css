@@ -53,3 +53,13 @@ a { color: #1f6f78; }
 dl { margin: 1rem 0 0; }
 dt { font-weight: 600; font-size: 0.85rem; color: #5a6b75; margin-top: 0.8rem; }
 dd { margin: 0.15rem 0 0; }
+
+
+.strength { margin: 6px 0 14px; }
+.strength-bar { height: 6px; border-radius: 3px; background: #dde3e7; position: relative; overflow: hidden; }
+.strength-bar::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 0; transition: width .2s, background .2s; }
+.strength-1 .strength-bar::after { width: 25%; background: #c0392b; }
+.strength-2 .strength-bar::after { width: 50%; background: #e67e22; }
+.strength-3 .strength-bar::after { width: 75%; background: #f1c40f; }
+.strength-4 .strength-bar::after { width: 100%; background: #27ae60; }
+.strength-text { font-size: .85rem; color: #5b6770; }
