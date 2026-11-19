@@ -63,3 +63,16 @@ dd { margin: 0.15rem 0 0; }
 .strength-3 .strength-bar::after { width: 75%; background: #f1c40f; }
 .strength-4 .strength-bar::after { width: 100%; background: #27ae60; }
 .strength-text { font-size: .85rem; color: #5b6770; }
+
+
+/* Strength meter colours: red = very weak, orange = weak/medium, green = strong */
+.strength-1 .strength-bar::after { background: #d62828; }
+.strength-2 .strength-bar::after { background: #f77f00; }
+.strength-3 .strength-bar::after { background: #f77f00; }
+.strength-4 .strength-bar::after { background: #2a9d4b; }
+
+.strength-text { font-weight: 600; }
+.strength-1 .strength-text { color: #d62828; }
+.strength-2 .strength-text { color: #d96800; }
+.strength-3 .strength-text { color: #d96800; }
+.strength-4 .strength-text { color: #1e8a3c; }

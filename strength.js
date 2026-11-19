@@ -3,7 +3,7 @@
   var box = document.getElementById('strength');
   if (!pw || !box) return;
   var text = box.querySelector('.strength-text');
-  var labels = ['Enter a password', 'Very weak', 'Weak', 'Good', 'Strong'];
+    var labels = ['Enter a password', 'Very weak', 'Weak', 'Medium', 'Strong'];
 
   pw.addEventListener('input', function () {
     var v = pw.value;
